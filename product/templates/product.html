@@ -37,8 +37,8 @@
                 <td>{{ p.amount }}</td>
                 <td>
                     <a href="view/{{ p.id }}/" class="btn btn-light">Visualizar</a>
-                    <a href="#" class="btn btn-primary">Editar</a>
-                    <a href="#" class="btn btn-danger btnDel">Deletar</a>
+                    <a href="update/{{ p.id }}/" class="btn btn-primary">Editar</a>
+                    <a href="delete/{{ p.id }}/" class="btn btn-danger btnDel">Deletar</a>
                 </td>
             </tr>
             {% endfor %}

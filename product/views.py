@@ -27,3 +27,24 @@ def product_create(request):
     if form.is_valid():
         form.save()
         return redirect('/')
+
+def product_update(request,pk):
+    context = {}
+    p_update = get_object_or_404(Product, pk=pk)
+    form = ProductForm(instance=p_update)
+    
+    if request.method == 'POST':
+        form = ProductForm(request.POST, instance=p_update)
+
+        if form.is_valid():
+            p_update.save()
+            return redirect('/')
+    #Metodo GET
+    else:
+        context = {'form': form,'product':p_update}
+        return render(request, 'update.html', context)   
+
+def product_delete(request, pk):
+    p_delete = Product.objects.get(pk=pk)
+    p_delete.delete()
+    return redirect('/')

@@ -1,6 +1,7 @@
 - Controle de estoque utilizando Django (Padrão MTV)
 
 - Crud do produto
+- Crud de empresa
 - Paginação dos produtos cadastrados
 - Login de usuário
 - Registrar usuário
