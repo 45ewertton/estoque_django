@@ -1,0 +1,10 @@
+- Controle de estoque utilizando Django (Padrão MTV)
+
+- Crud do produto
+- Paginação dos produtos cadastrados
+- Login de usuário
+- Registrar usuário
+- FK de usuário e estoque
+- Filtro dos itens do estoque
+
+- O usuário vai ser capaz de cadastrar produtos e ter controle sobre ele (CRUD). 
