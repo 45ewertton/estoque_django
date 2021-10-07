@@ -24,9 +24,8 @@
             {% for comp in company %}
             <tr>
                 <th>{{ comp.id }}</th>
-                <td>{{ comp.name }}</td>
+                <td><a href="{% url 'unique-company' comp.pk %}" class="text-muted">{{ comp.name }}</a></td>
                 <td>
-                    <a href="#" class="btn btn-dark">Visualizar</a>
                     <a href="#" class="btn btn-success">Editar</a>
 
                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
