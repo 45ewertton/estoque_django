@@ -37,7 +37,7 @@ def product_update(request,pk):
         form = ProductForm(request.POST, instance=p_update)
 
         if form.is_valid():
-            p_update.save()
+            form.save()
             return redirect('/')
     #Metodo GET
     else:
@@ -47,4 +47,5 @@ def product_update(request,pk):
 def product_delete(request, pk):
     p_delete = Product.objects.get(pk=pk)
     p_delete.delete()
+
     return redirect('/')
