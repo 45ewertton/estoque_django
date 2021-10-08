@@ -42,10 +42,10 @@
                     <a href="view/{{ p.id }}/" class="btn btn-light">Visualizar</a>
                     <a href="update/{{ p.id }}/" class="btn btn-primary">Editar</a>
 
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal_{{ p.id }}">
                         Deletar
                     </button>
-                    <div class="modal fade text-dark" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade text-dark" id="exampleModal_{{ p.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">

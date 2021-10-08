@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Company
 from company.forms import CompanyForm
+from django.contrib import messages
 # Create your views here.
 
 # Visualizar todas as empresas e criar novas empresas em um único método
@@ -29,3 +30,12 @@ def unique_company(request, pk):
     context = {'company': company_u}
     
     return render(request, 'unique.html', context)
+
+def delete_company(request, pk):
+
+    comp_delete = get_object_or_404(Company, pk=pk)
+    comp_delete.delete()
+
+    messages.info(request, 'Empresa deletada com sucesso!')
+
+    return redirect('home-company')

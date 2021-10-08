@@ -18,6 +18,15 @@
     <div class="col-8 m-auto pt-2 pb-2 text-center">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal" data-whatever="@mdo">Nova Empresa</button>
 
+        {% if messages %}
+        <div class="pt-3">
+            <ul class="messages">
+                {% for message in messages %}
+                <ul {% if message.tags %}class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</ul>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
         <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -64,10 +73,10 @@
                 <td>
                     <a href="#" class="btn btn-success">Editar</a>
 
-                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#deleteModal">
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#deleteModal_{{ comp.pk }}">
                         Deletar
                     </button>
-                    <div class="modal fade text-dark" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade text-dark" id="deleteModal_{{ comp.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -81,7 +90,7 @@
                             </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                    <a href="#" type="button" class="btn btn-danger">Deletar</a>
+                                    <a href="{% url 'delete-company' comp.pk %}" type="button" class="btn btn-danger">Deletar</a>
                                 </div>
                             </div>
                         </div>
