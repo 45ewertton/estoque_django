@@ -1,3 +1,4 @@
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,9 +15,44 @@
     <div class="col-8 m-auto pt-2 pb-2 text-center">
         <h1>Empresas</h1>
     </div>
-
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <a href="#" class="btn btn-primary">Adicionar</a>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal" data-whatever="@mdo">Nova Empresa</button>
+
+        <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Cadastro - Nova Empresa</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <div class="modal-body">
+                    <form method="post" action="{% url 'home-company' %}">
+                        {% csrf_token %}
+                        {% for field in form.visible_fields %}
+                            <div class="form-group">
+                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                                {% for error in field.errors %}
+                                {% block js %}
+                                    <script>
+                                        $('#createModal').modal('show')
+                                    </script>
+                                {% endblock js %}
+                                <span class="help-block">{{ error }}</span>
+                                {% endfor %}
+                            </div>    
+                        {% endfor %}
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <input type="submit" class="btn btn-success" value="Adicionar nova empresa">
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="col-8 m-auto pt-2 pb-2 text-center">
@@ -28,10 +64,10 @@
                 <td>
                     <a href="#" class="btn btn-success">Editar</a>
 
-                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#deleteModal">
                         Deletar
                     </button>
-                    <div class="modal fade text-dark" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade text-dark" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
