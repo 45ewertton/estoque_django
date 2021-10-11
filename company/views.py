@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Company
+from company.models import Company
 from company.forms import CompanyForm
 from django.contrib import messages
 # Create your views here.
@@ -53,5 +53,7 @@ def update_company(request, pk):
         if form.is_valid():
             form.save()
             return redirect('home-company')
-    else:
-        return redirect('home-company')
+        else: 
+            context['form'] = form
+
+    return redirect('home-company')

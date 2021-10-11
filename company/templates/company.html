@@ -86,10 +86,38 @@
                                 <div class="modal-body">
                                     <form method="post" action="{% url 'update-company' comp.pk%}">
                                     {% csrf_token %}
+
+                                    <div class="form-group">
+
                                         {{ form.name.label }}
                                         {% render_field form.name class="form-control" value=comp.name %}
+
                                         {{ form.cnpj.label }}
                                         {% render_field form.cnpj class="form-control" value=comp.cnpj %}
+
+                                        
+
+                                    </div>
+
+                                        <!--{% for error in form.name.errors %}
+                                            <span class="help-block">{{ error }}</span>
+                                        {% endfor %} -->
+
+                                        <!--{{ field|add_class:'form-control' }} -->
+
+                                        <!--{% for error in form.name.errors %}
+                                            <span class="help-block">{{ error }}</span>
+                                        {% endfor %} -->
+
+                                        <!--<div class="form-group" {% if form.title.errors %} has-error {% endif %}>
+                                            <label class="control-label" for="id_title">Title</label>
+                                            {{ form.title|add_class:"form-control" }}
+                                            <div class="help-block">{{ form.title.errors }}</div>
+                                        </div>  -->
+
+                                        <!--{% for error in field.errors %}
+                                            <span class="help-block">{{ error }}</span>
+                                            {% endfor %} -->
                                         
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
