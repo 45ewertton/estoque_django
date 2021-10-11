@@ -71,8 +71,35 @@
                 <th>{{ comp.id }}</th>
                 <td><a href="{% url 'unique-company' comp.pk %}" class="text-muted">{{ comp.name }}</a></td>
                 <td>
-                    <a href="#" class="btn btn-success">Editar</a>
-
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#editModal_{{ comp.pk }}" data-whatever="@mdo">
+                        Editar
+                    </button>
+                    <div class="modal fade" id="editModal_{{ comp.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Atualizar dados da empresa</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" action="{% url 'update-company' comp.pk%}">
+                                    {% csrf_token %}
+                                        {{ form.name.label }}
+                                        {% render_field form.name class="form-control" value=comp.name %}
+                                        {{ form.cnpj.label }}
+                                        {% render_field form.cnpj class="form-control" value=comp.cnpj %}
+                                        
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                            <button href="{% url 'update-company' comp.pk %}" type="submit" class="btn btn-success">Atualizar empresa</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#deleteModal_{{ comp.pk }}">
                         Deletar
                     </button>

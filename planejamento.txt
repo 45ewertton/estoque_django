@@ -1,8 +1,11 @@
 - Controle de estoque utilizando Django (Padrão MTV)
 
-- Crud do produto
-- Crud de empresa
-- Paginação dos produtos cadastrados
+- Crud do produto OK
+- Crud de empresa OK
+    - Criar novo campo em empresas
+    - Tratar erros de update das empresas caso tenham nomes e cnpjs iguais
+    - Implementar mensagens de "Success" para acções de update e create
+- Paginação dos produtos e empresas cadastradas
 - Login de usuário
 - Registrar usuário
 - FK de usuário e estoque
