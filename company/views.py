@@ -46,6 +46,7 @@ def delete_company(request, pk):
 
 # Atualizar uma empresa especifica
 def update_company(request, pk):
+    form = CompanyForm()
     comp_update = get_object_or_404(Company, pk=pk)
     form_update = CompanyForm(instance=comp_update)
     company_all = Company.objects.all()
@@ -61,6 +62,7 @@ def update_company(request, pk):
             messages.info(request, 'Empresa atualizada com sucesso!')
             return redirect('home-company')
         else: 
+            context['form'] = form
             context['form_update'] = form_update
             context['form_update_pk'] = pk
 
