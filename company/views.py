@@ -12,7 +12,7 @@ def home_company(request):
     context = {'company': company_all}
     
     context['form'] = CompanyForm()
-    context['form_update'] = CompanyForm()
+    context['form_update'] = CompanyForm(prefix="update")
 
     if request.POST:
         form = CompanyForm(request.POST or None)
@@ -48,7 +48,7 @@ def delete_company(request, pk):
 def update_company(request, pk):
     form = CompanyForm()
     comp_update = get_object_or_404(Company, pk=pk)
-    form_update = CompanyForm(instance=comp_update)
+    form_update = CompanyForm()
     company_all = Company.objects.all()
 
     context = {'form': form_update}

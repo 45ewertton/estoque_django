@@ -89,36 +89,50 @@
 
                                     <div class="form-group">
 
+                                        {% if form_update_pk == comp.pk %}
+                                            {% block extra_js %}
+                                                <script>
+                                                    $('#editModal_{{ comp.pk }}').modal('show')
+                                                </script>
+                                            {% endblock %}
+                                        {% endif %}
+
                                         <div>
                                             {{ form_update.name.label }}
-                                            {% render_field form_update.name class="form-control" value=comp.name %}
-                                        
+
                                             {% if form_update_pk == comp.pk %}
+                                                {% render_field form_update.name class="form-control"%}
                                                 {% for error in form_update.name.errors %}
                                                     <span class="help-block">{{ error }}</span>
                                                 {% endfor %}
+                                            {% else %}
+                                                {% render_field form.name class="form-control" value=comp.name %}
                                             {% endif %}
                                         </div>
 
                                         <div>
                                             {{ form_update.cnpj.label }}
-                                            {% render_field form_update.cnpj class="form-control" value=comp.cnpj %}
-
+            
                                             {% if form_update_pk == comp.pk %}
+                                                {% render_field form_update.cnpj class="form-control" %}
                                                 {% for error in form_update.cnpj.errors %}
                                                     <span class="help-block">{{ error }}</span>
                                                 {% endfor %}
+                                            {% else %}
+                                                {% render_field form.cnpj class="form-control" value=comp.cnpj %}
                                             {% endif %}
                                         </div>    
                                         
                                         <div>
                                             {{ form_update.tel.label }}
-                                            {% render_field form_update.tel class="form-control" value=comp.tel %}
 
                                             {% if form_update_pk == comp.pk %}
+                                                {% render_field form_update.tel class="form-control" %}
                                                 {% for error in form_update.tel.errors %}
                                                     <span class="help-block">{{ error }}</span>
                                                 {% endfor %}
+                                            {% else %}
+                                                {% render_field form.tel class="form-control" value=comp.tel %}
                                             {% endif %}
                                         </div>
                                     </div>

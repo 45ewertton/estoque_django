@@ -4,7 +4,7 @@
 - Crud de empresa OK
     - Criar novo campo em empresas OK
     - Tratar erros de update das empresas caso tenham nomes, cnpjs e telefones iguais OK
-    - Fazer script para "ativar" o modal de update em caso de campos iguais 
+    - Fazer script para "ativar" o modal de update em caso de campos iguais OK
     - Implementar mensagens de "Success" para acções de update e create OK
 - Paginação dos produtos e empresas cadastradas
 - NavBar
