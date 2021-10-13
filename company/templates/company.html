@@ -89,36 +89,39 @@
 
                                     <div class="form-group">
 
-                                        {{ form.name.label }}
-                                        {% render_field form.name class="form-control" value=comp.name %}
-
-                                        {{ form.cnpj.label }}
-                                        {% render_field form.cnpj class="form-control" value=comp.cnpj %}
-
+                                        <div>
+                                            {{ form_update.name.label }}
+                                            {% render_field form_update.name class="form-control" value=comp.name %}
                                         
+                                            {% if form_update_pk == comp.pk %}
+                                                {% for error in form_update.name.errors %}
+                                                    <span class="help-block">{{ error }}</span>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
 
+                                        <div>
+                                            {{ form_update.cnpj.label }}
+                                            {% render_field form_update.cnpj class="form-control" value=comp.cnpj %}
+
+                                            {% if form_update_pk == comp.pk %}
+                                                {% for error in form_update.cnpj.errors %}
+                                                    <span class="help-block">{{ error }}</span>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>    
+                                        
+                                        <div>
+                                            {{ form_update.tel.label }}
+                                            {% render_field form_update.tel class="form-control" value=comp.tel %}
+
+                                            {% if form_update_pk == comp.pk %}
+                                                {% for error in form_update.tel.errors %}
+                                                    <span class="help-block">{{ error }}</span>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
                                     </div>
-
-                                        <!--{% for error in form.name.errors %}
-                                            <span class="help-block">{{ error }}</span>
-                                        {% endfor %} -->
-
-                                        <!--{{ field|add_class:'form-control' }} -->
-
-                                        <!--{% for error in form.name.errors %}
-                                            <span class="help-block">{{ error }}</span>
-                                        {% endfor %} -->
-
-                                        <!--<div class="form-group" {% if form.title.errors %} has-error {% endif %}>
-                                            <label class="control-label" for="id_title">Title</label>
-                                            {{ form.title|add_class:"form-control" }}
-                                            <div class="help-block">{{ form.title.errors }}</div>
-                                        </div>  -->
-
-                                        <!--{% for error in field.errors %}
-                                            <span class="help-block">{{ error }}</span>
-                                            {% endfor %} -->
-                                        
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                                             <button href="{% url 'update-company' comp.pk %}" type="submit" class="btn btn-success">Atualizar empresa</button>

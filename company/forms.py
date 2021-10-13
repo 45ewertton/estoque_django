@@ -6,4 +6,4 @@ class CompanyForm(ModelForm):
     
     class Meta:
         model = Company
-        fields = ['name', 'cnpj']
+        fields = ['name', 'cnpj', 'tel']

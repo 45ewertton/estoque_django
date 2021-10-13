@@ -10,12 +10,15 @@ def home_company(request):
     context = {}
     company_all = Company.objects.all()
     context = {'company': company_all}
+    
     context['form'] = CompanyForm()
+    context['form_update'] = CompanyForm()
 
     if request.POST:
         form = CompanyForm(request.POST or None)
         if form.is_valid():
             form.save()
+            messages.info(request, 'Empresa criada com sucesso!')
             return redirect('home-company')
         else: 
             context['form'] = form
@@ -44,16 +47,21 @@ def delete_company(request, pk):
 # Atualizar uma empresa especifica
 def update_company(request, pk):
     comp_update = get_object_or_404(Company, pk=pk)
-    form = CompanyForm(instance=comp_update)
-    context = {'form': form}
+    form_update = CompanyForm(instance=comp_update)
+    company_all = Company.objects.all()
+
+    context = {'form': form_update}
+    context = {'company': company_all}
 
     if request.method == 'POST':
-        form = CompanyForm(request.POST, instance=comp_update)
+        form_update = CompanyForm(request.POST, instance=comp_update)
 
-        if form.is_valid():
-            form.save()
+        if form_update.is_valid():
+            form_update.save()
+            messages.info(request, 'Empresa atualizada com sucesso!')
             return redirect('home-company')
         else: 
-            context['form'] = form
+            context['form_update'] = form_update
+            context['form_update_pk'] = pk
 
-    return redirect('home-company')
+    return render(request, 'company.html', context)
