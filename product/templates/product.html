@@ -17,7 +17,11 @@
     </div>
 
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <a href="/form" class="btn btn-success">Adicionar</a>
+        <a href="{% url 'home-company' %}" class="btn btn-outline-primary"><i class="fas fa-fast-forward"></i></a>
+    </div>
+
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <a href="/form" class="btn btn-primary">Adicionar</a>
     </div>
 
     <div class="col-8 m-auto pt-2 pb-2 text-center">
@@ -42,7 +46,7 @@
                 <td>{{ p.amount }}</td>
                 <td>
                     <a href="view/{{ p.id }}/" class="btn btn-light btn-sm"><i class="fas fa-eye"></i></a>
-                    <a href="update/{{ p.id }}/" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                    <a href="update/{{ p.id }}/" class="btn btn-success btn-sm"><i class="fas fa-pencil-alt"></i></a>
 
                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal_{{ p.id }}">
                         <i class="fas fa-trash"></i>
