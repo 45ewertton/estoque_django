@@ -1,13 +1,22 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product
 from product.forms import ProductForm
+from django.core.paginator import Paginator
 # Create your views here.
 
 def product_list(request):
     
+    context = {}
     p_list = Product.objects.all()
 
-    return render(request, 'product.html', {'product': p_list})
+    paginator = Paginator(p_list, 3)
+    page = request.GET.get('page')
+    product = paginator.get_page(page)
+
+    context = {'product': product}
+
+
+    return render(request, 'product.html', context)
 
 def product_view(request, pk):
 
