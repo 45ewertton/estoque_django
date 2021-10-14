@@ -14,8 +14,7 @@ def product_list(request):
     product = paginator.get_page(page)
 
     context = {'product': product}
-
-
+    
     return render(request, 'product.html', context)
 
 def product_view(request, pk):
