@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from company.models import Company
 from company.forms import CompanyForm
 from django.contrib import messages
+from django.core.paginator import Paginator
 # Create your views here.
 
 # Visualizar todas as empresas e criar novas empresas em um único método
@@ -9,7 +10,12 @@ def home_company(request):
 
     context = {}
     company_all = Company.objects.all()
-    context = {'company': company_all}
+
+    paginator = Paginator(company_all, 4)
+    page = request.GET.get('page')
+    company = paginator.get_page(page)
+
+    context = {'company': company}
     
     context['form'] = CompanyForm()
     context['form_update'] = CompanyForm(prefix="update")
@@ -22,7 +28,7 @@ def home_company(request):
             return redirect('home-company')
         else: 
             context['form'] = form
-            
+    
     return render(request, 'company.html', context)
 
 # Visualizar um objeto específico
