@@ -6,11 +6,7 @@
     </div>
 
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <a href="{% url 'home-company' %}" class="btn btn-outline-primary"><i class="fas fa-fast-forward"></i></a>
-    </div>
-
-    <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <a href="/form" class="btn btn-primary">Adicionar</a>
+        <a href="/form" class="btn btn-outline-dark">Novo Produto</a>
     </div>
 
     <div class="col-8 m-auto pt-2 pb-2 text-center">
@@ -70,17 +66,17 @@
                 <ul class="pagination justify-content-center">
                     <li class="page-item">
                         {% if product.has_previous %}
-                            <a class="page-link" href="?page={{ product.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
+                            <a class="page-link" style="color:black" href="?page={{ product.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
                         {% endif %}
                     </li>
                     
                     {% for count_page in product.paginator.page_range %}
-                        <li class="page-item"><a class="page-link" href="?page={{ count_page }}">{{ count_page }}</a></li>
+                        <li class="page-item"><a class="page-link" style="color:black" href="?page={{ count_page }}">{{ count_page }}</a></li>
                     {% endfor %}
 
                     <li class="page-item">
                         {% if product.has_next %}
-                            <a class="page-link" href="?page={{ product.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
+                            <a class="page-link" style="color:black" href="?page={{ product.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
                         {% endif %}
                     </li>
                 </ul>

@@ -1,12 +1,12 @@
 {% extends 'base_company.html' %}
-{% block title %}Empresas{% endblock %}
+{% block title %}Empresas - Visualizar{% endblock %}
 {% block content %}
     <div class="col-8 m-auto pt-2 pb-2 text-center">
         <h1>Visualização - {{ company.name }}</h1>
     </div>
 
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <a href="{% url 'home-company' %}" class="btn btn-info">Voltar</a>
+        <a href="{% url 'home-company' %}" class="btn btn-outline-dark"><i class="fas fa-fast-backward"></i></a>
     </div>
 
     <div class="col-8 m-auto pt-2 pb-2 text-center">

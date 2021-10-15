@@ -2,11 +2,11 @@
 {% block title %}Produtos - Visualizar{% endblock %}
 {% block content %}
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <h1>Visualização</h1>
+        <h1>Visualização - {{ product.name }}</h1>
     </div>
 
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <a href="/" class="btn btn-info">Voltar</a>
+        <a href="{% url 'product-list' %}" class="btn btn-outline-dark"><i class="fas fa-fast-backward"></i></a>
     </div>
 
     <div class="col-8 m-auto pt-2 pb-2 text-center">

@@ -7,7 +7,8 @@
     - Fazer script para "ativar" o modal de update em caso de campos iguais OK
     - Implementar mensagens de "Success" para acções de update e create OK
 - Paginação dos produtos e empresas cadastradas OK
-- NavBar
+- NavBar OK
+- Organizar forms de produto (Cadastrar e Atualizar)
 - Login de usuário
 - Registrar usuário
 - FK de usuário e estoque

@@ -3,15 +3,11 @@
 {% block title %}Empresas{% endblock %}
 {% block content %}
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <h1>Empresas</h1> 
+        <h1>Listagem de Empresas</h1> 
     </div>
 
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <a href="{% url 'product-list' %}" class="btn btn-outline-primary"><i class="fas fa-fast-backward"></i></a>
-    </div>
-
-    <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal" data-whatever="@mdo">Nova Empresa</button>
+        <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#createModal" data-whatever="@mdo">Nova Empresa</button>
 
         {% if messages %}
         <div class="pt-3">
@@ -172,17 +168,17 @@
                 <ul class="pagination justify-content-center">
                     <li class="page-item">
                         {% if company.has_previous %}
-                            <a class="page-link" href="?page={{ company.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
+                            <a class="page-link"style="color:black"  href="?page={{ company.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
                         {% endif %}
                     </li>
                     
                     {% for count_page in company.paginator.page_range %}
-                        <li class="page-item"><a class="page-link" href="?page={{ count_page }}">{{ count_page }}</a></li>
+                        <li class="page-item"><a class="page-link" style="color:black" href="?page={{ count_page }}">{{ count_page }}</a></li>
                     {% endfor %}
     
                     <li class="page-item">
                         {% if company.has_next %}
-                            <a class="page-link" href="?page={{ company.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
+                            <a class="page-link" style="color:black" href="?page={{ company.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
                         {% endif %}
                     </li>
                 </ul>
