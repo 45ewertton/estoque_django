@@ -32,7 +32,9 @@
                         {% csrf_token %}
                         {% for field in form.visible_fields %}
                             <div class="form-group">
-                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                <strong>
+                                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                </strong>
                                 {{ field|add_class:'form-control' }}
                                 {% for error in field.errors %}
                                 {% block js %}
@@ -89,7 +91,9 @@
                                         {% endif %}
 
                                         <div>
-                                            {{ form_update.name.label }}
+                                            <strong> 
+                                                {{ form_update.name.label }}
+                                            </strong>
 
                                             {% if form_update_pk == comp.pk %}
                                                 {% render_field form_update.name class="form-control"%}
@@ -102,7 +106,9 @@
                                         </div>
 
                                         <div>
-                                            {{ form_update.cnpj.label }}
+                                            <strong> 
+                                                {{ form_update.cnpj.label }}
+                                            </strong>
             
                                             {% if form_update_pk == comp.pk %}
                                                 {% render_field form_update.cnpj class="form-control" %}
@@ -115,7 +121,9 @@
                                         </div>    
                                         
                                         <div>
-                                            {{ form_update.tel.label }}
+                                            <strong>
+                                                {{ form_update.tel.label }}
+                                            </strong> 
 
                                             {% if form_update_pk == comp.pk %}
                                                 {% render_field form_update.tel class="form-control" %}

@@ -8,10 +8,10 @@
     - Implementar mensagens de "Success" para acções de update e create OK
 - Paginação dos produtos e empresas cadastradas OK
 - NavBar OK
-- Organizar forms de produto (Cadastrar e Atualizar)
+- Organizar forms de produto e empresa (Cadastrar e Atualizar) OK
+- Filtro dos itens do estoque
 - Login de usuário
 - Registrar usuário
 - FK de usuário e estoque
-- Filtro dos itens do estoque
 
 - O usuário vai ser capaz de cadastrar produtos e ter controle sobre ele (CRUD). 
