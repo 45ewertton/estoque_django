@@ -177,23 +177,29 @@
             </tr>
             {% endfor %}
         </table>
-        <div class="paginator">
-            <span class="step-links">
-                {% if company.has_previous %}
-                    <a class="link-secondary" href="?page={{ company.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
-                {% endif %}
 
-                {% if company.paginator.num_pages %}
-                <span class="current">
-                    {{ company.number }} de {{ company.paginator.num_pages }}
-                </span>
-                {% endif %}
-
-                {% if company.has_next %}
-                    <a class="link-secondary" href="?page={{ company.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
-                {% endif %}
-            </span>
+        <div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        {% if company.has_previous %}
+                            <a class="page-link" href="?page={{ company.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
+                        {% endif %}
+                    </li>
+                    
+                    {% for count_page in company.paginator.page_range %}
+                        <li class="page-item"><a class="page-link" href="?page={{ count_page }}">{{ count_page }}</a></li>
+                    {% endfor %}
+    
+                    <li class="page-item">
+                        {% if company.has_next %}
+                            <a class="page-link" href="?page={{ company.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </nav>
         </div>
+
     </div>
 </body>
 </html>
