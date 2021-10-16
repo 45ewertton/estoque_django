@@ -9,7 +9,9 @@
 - Paginação dos produtos e empresas cadastradas OK
 - NavBar OK
 - Organizar forms de produto e empresa (Cadastrar e Atualizar) OK
-- Filtro dos itens do estoque
+- Realização do sistema de busca e ordenação de produtos e empresas
+    - Busca por todos os campos
+    - Ordenar de acordo com o campo selecionado
 - Login de usuário
 - Registrar usuário
 - FK de usuário e estoque
