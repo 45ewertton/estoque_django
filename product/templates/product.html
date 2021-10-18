@@ -3,11 +3,11 @@
 {% block content %}
     <div class="col-8 m-auto pt-2 pb-2 text-center">
         <h1>Listagem de Produtos</h1>
-            <form class="form-inline col-4 m-auto mt-3" action="#" method="#">
+            <form class="form-inline col-4 m-auto mt-3" action="{% url 'product-list' %}" method="post">
                     <div class="form-group mb-2">
                         {% csrf_token %}
                         <div class="input-group input-group-sm">
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="search">
                             <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-search"></i></button>
                         </div>
                     </div>
