@@ -7,9 +7,14 @@ from django.core.paginator import Paginator
 def product_list(request):
     
     context = {}
-    p_list = Product.objects.all()
+    product = Product.objects.all()
 
-    paginator = Paginator(p_list, 3)
+    # search = request.POST.get('search')
+
+    # if search:
+    #     product = Product.objects.filter(name__startswith=search)
+
+    paginator = Paginator(product, 3)
     page = request.GET.get('page')
     product = paginator.get_page(page)
 
