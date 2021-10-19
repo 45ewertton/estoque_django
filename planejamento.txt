@@ -10,7 +10,7 @@
 - NavBar OK
 - Organizar forms de produto e empresa (Cadastrar e Atualizar) OK
 - Realização do sistema de busca e ordenação de produtos e empresas
-    - Busca por todos os campos
+    - Busca por todos os campos OK
     - Ordenar de acordo com o campo selecionado
 - Login de usuário
 - Registrar usuário
