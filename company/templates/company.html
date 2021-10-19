@@ -185,15 +185,15 @@
                     <li class="page-item">
                         {% if request.GET.search %}
                             {% if company.has_previous %}
-                                <a class="page-link"style="color:black"  href="?page={{ company.previous_page_number }}&search={{ request.GET.search }}"><i class="fas fa-arrow-circle-left"></i></a>
+                                <a class="page-link" style="color:black"  href="?page={{ company.previous_page_number }}&search={{ request.GET.search }}"><i class="fas fa-arrow-circle-left"></i></a>
                             {% else %}
-                                <a class="page-link"style="color:black"  href="#"><i class="fas fa-arrow-circle-left"></i></a>
+                                <a class="page-link" style="color:rgb(129, 127, 127)"  href="#"><i class="fas fa-arrow-circle-left"></i></a>
                             {% endif %}
                         {% else %}
                             {% if company.has_previous %}
-                                <a class="page-link"style="color:black"  href="?page={{ company.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
+                                <a class="page-link" style="color:black"  href="?page={{ company.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
                             {% else %}
-                                <a class="page-link"style="color:black"  href="#"><i class="fas fa-arrow-circle-left"></i></a>
+                                <a class="page-link" style="color:rgb(129, 127, 127)"  href="#"><i class="fas fa-arrow-circle-left"></i></a>
                             {% endif %}
                         {% endif %}
                         
@@ -212,13 +212,13 @@
                             {% if company.has_next %}
                                 <a class="page-link" style="color:black" href="?page={{ company.next_page_number }}&search={{ request.GET.search }}"><i class="fas fa-arrow-circle-right"></i></a>
                             {% else %}
-                            <a class="page-link" style="color:black" href="#"><i class="fas fa-arrow-circle-right"></i></a>
+                                <a class="page-link" style="color:rgb(129, 127, 127)" href="#"><i class="fas fa-arrow-circle-right"></i></a>
                             {% endif %}
                         {% else %}
                             {% if company.has_next %}
                                 <a class="page-link" style="color:black" href="?page={{ company.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
                             {% else %}
-                                <a class="page-link" style="color:black" href="#"><i class="fas fa-arrow-circle-right"></i></a>
+                                <a class="page-link" style="color:rgb(129, 127, 127)" href="#"><i class="fas fa-arrow-circle-right"></i></a>
                             {% endif %}
                         {% endif %}
                     </li>

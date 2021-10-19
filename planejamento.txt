@@ -7,6 +7,7 @@
     - Fazer script para "ativar" o modal de update em caso de campos iguais OK
     - Implementar mensagens de "Success" para acções de update e create OK
 - Paginação dos produtos e empresas cadastradas OK
+     - Desabilitar o primeiro e último botão da paginação (Utilizar ELSE, por href="#" para desabilitar e mudar a cor para cinza) OK
 - NavBar OK
 - Organizar forms de produto e empresa (Cadastrar e Atualizar) OK
 - Realização do sistema de busca e ordenação de produtos e empresas
@@ -19,8 +20,6 @@
 - O usuário vai ser capaz de cadastrar produtos e ter controle sobre ele (CRUD). 
 
 Algumas anotações:
-
-    - Desabilitar o primeiro e último botão da paginação (Utilizar ELSE, por href="#" para desabilitar e mudar a cor para cinza)
 
     (views de products)
     order = request.GET.get('order')
