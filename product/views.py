@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product
 from product.forms import ProductForm
 from django.core.paginator import Paginator
+from django.db.models import Q
 # Create your views here.
 
 def product_list(request):
@@ -9,9 +10,17 @@ def product_list(request):
     context = {}
     product = Product.objects.all()
 
+    # Fazer search setando todos os campos da tabela
+
     search = request.GET.get('search')
     if search:
-        product = Product.objects.filter(name__startswith=search)
+        product = Product.objects.filter(
+            Q(pk__startswith=search) |
+            Q(name__icontains=search) |
+            Q(description__icontains=search) |
+            Q(price__startswith=search) |
+            Q(amount__startswith=search)
+            )
 
     paginator = Paginator(product, 3)
     page = request.GET.get('page')
