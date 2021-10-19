@@ -5,14 +5,11 @@ from django.core.paginator import Paginator
 # Create your views here.
 
 def product_list(request):
-    
+
     context = {}
     product = Product.objects.all()
 
-    search = request.POST.get('search')
-
-    #Deixar o search setando o valor pesquisado para não retornar vazio
-
+    search = request.GET.get('search')
     if search:
         product = Product.objects.filter(name__startswith=search)
 
@@ -21,7 +18,7 @@ def product_list(request):
     product = paginator.get_page(page)
 
     context = {'product': product}
-    
+
     return render(request, 'product.html', context)
 
 def product_view(request, pk):

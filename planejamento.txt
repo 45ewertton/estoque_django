@@ -17,3 +17,11 @@
 - FK de usuário e estoque
 
 - O usuário vai ser capaz de cadastrar produtos e ter controle sobre ele (CRUD). 
+
+Algumas anotações:
+    (views de products)
+    
+    order = request.GET.get('order')
+
+    if order:
+        product = product.order_by(order) # ('-' + order)
