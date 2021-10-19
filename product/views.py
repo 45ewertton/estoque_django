@@ -10,8 +10,6 @@ def product_list(request):
     context = {}
     product = Product.objects.all()
 
-    # Fazer search setando todos os campos da tabela
-
     search = request.GET.get('search')
     if search:
         product = Product.objects.filter(
