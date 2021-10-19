@@ -3,15 +3,25 @@ from company.models import Company
 from company.forms import CompanyForm
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.db.models import Q
 # Create your views here.
 
 # Visualizar todas as empresas e criar novas empresas em um único método
 def home_company(request):
 
     context = {}
-    company_all = Company.objects.all()
+    company = Company.objects.all()
 
-    paginator = Paginator(company_all, 4)
+    search = request.GET.get('search')
+    if search:
+        company = Company.objects.filter(
+            Q(pk__startswith=search) |
+            Q(name__icontains=search) |
+            Q(cnpj__startswith=search) |
+            Q(tel__startswith=search)
+            )
+
+    paginator = Paginator(company, 4)
     page = request.GET.get('page')
     company = paginator.get_page(page)
 

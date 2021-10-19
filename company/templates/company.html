@@ -4,8 +4,16 @@
 {% block content %}
     <div class="col-8 m-auto pt-2 pb-2 text-center">
         <h1>Listagem de Empresas</h1> 
+        <form class="form-inline col-4 m-auto mt-3" method="GET">
+            <div class="form-group mb-2">
+                {% csrf_token %}
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" name="search" value="{{ request.GET.search }}">
+                    <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </form>
     </div>
-
     <div class="col-8 m-auto pt-2 pb-2 text-center">
         <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#createModal" data-whatever="@mdo">Nova Empresa</button>
 
@@ -175,18 +183,35 @@
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
                     <li class="page-item">
-                        {% if company.has_previous %}
-                            <a class="page-link"style="color:black"  href="?page={{ company.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
+                        {% if request.GET.search %}
+                            {% if company.has_previous %}
+                                <a class="page-link"style="color:black"  href="?page={{ company.previous_page_number }}&search={{ request.GET.search }}"><i class="fas fa-arrow-circle-left"></i></a>
+                            {% endif %}
+                        {% else %}
+                            {% if company.has_previous %}
+                                <a class="page-link"style="color:black"  href="?page={{ company.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
+                            {% endif %}
                         {% endif %}
+                        
                     </li>
                     
                     {% for count_page in company.paginator.page_range %}
-                        <li class="page-item"><a class="page-link" style="color:black" href="?page={{ count_page }}">{{ count_page }}</a></li>
+                        {% if request.GET.search %}
+                            <li class="page-item"><a class="page-link" style="color:black" href="?page={{ count_page }}&search={{ request.GET.search }}">{{ count_page }}</a></li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link" style="color:black" href="?page={{ count_page }}">{{ count_page }}</a></li>
+                        {% endif %}
                     {% endfor %}
     
                     <li class="page-item">
-                        {% if company.has_next %}
-                            <a class="page-link" style="color:black" href="?page={{ company.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
+                        {% if request.GET.search %}
+                            {% if company.has_next %}
+                                <a class="page-link" style="color:black" href="?page={{ company.next_page_number }}&search={{ request.GET.search }}"><i class="fas fa-arrow-circle-right"></i></a>
+                            {% endif %}
+                        {% else %}
+                            {% if company.has_next %}
+                                <a class="page-link" style="color:black" href="?page={{ company.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
+                            {% endif %}
                         {% endif %}
                     </li>
                 </ul>
