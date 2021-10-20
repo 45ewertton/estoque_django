@@ -20,6 +20,10 @@ def product_list(request):
             Q(amount__startswith=search)
             )
 
+    order = request.GET.get('order')
+    if order:
+        product = product.order_by(order) # ('-' + order)
+
     paginator = Paginator(product, 3)
     page = request.GET.get('page')
     product = paginator.get_page(page)

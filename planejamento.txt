@@ -10,9 +10,11 @@
      - Desabilitar o primeiro e último botão da paginação (Utilizar ELSE, por href="#" para desabilitar e mudar a cor para cinza) OK
 - NavBar OK
 - Organizar forms de produto e empresa (Cadastrar e Atualizar) OK
-- Realização do sistema de busca e ordenação de produtos e empresas
+- Realização do sistema de busca de produtos e empresas OK
     - Busca por todos os campos OK
-    - Ordenar de acordo com o campo selecionado
+- Ordenar (produtos e empresas) de acordo com o campo selecionado
+    - Ordenar todos os itens e não perder a ordenação caso ocorra a paginação
+    - Ordenar itens pesquisados e não perder a ordenação caso ocorra a paginação
 - Login de usuário
 - Registrar usuário
 - FK de usuário e estoque

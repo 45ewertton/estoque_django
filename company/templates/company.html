@@ -70,7 +70,7 @@
             {% for comp in company %}
             <tr>
                 <th>{{ comp.id }}</th>
-                <td><a href="{% url 'unique-company' comp.pk %}" class="text-muted">{{ comp.name }}</a></td>
+                <td><a href="{% url 'unique-company' comp.pk %}" class="text-muted" style="text-decoration: none;">{{ comp.name }}</a></td>
                 <td>
                     <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#editModal_{{ comp.pk }}" data-whatever="@mdo">
                         <i class="fas fa-edit"></i>
