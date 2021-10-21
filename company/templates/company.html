@@ -64,119 +64,132 @@
             </div>
         </div>
     </div>
-
     <div class="col-8 m-auto pt-2 pb-2 text-center">
         <table class="table table-striped">
-            {% for comp in company %}
-            <tr>
-                <th>{{ comp.id }}</th>
-                <td><a href="{% url 'unique-company' comp.pk %}" class="text-muted" style="text-decoration: none;">{{ comp.name }}</a></td>
-                <td>
-                    <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#editModal_{{ comp.pk }}" data-whatever="@mdo">
-                        <i class="fas fa-edit"></i>
-                    </button>
-                    <div class="modal fade" id="editModal_{{ comp.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Atualizar dados da empresa</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+            <thead>
+                <tr>
+                    {% if request.GET.search %}
+                        <th scope="col"><a href="?search={{ request.GET.search }}&order=pk" style="text-decoration: none; color:black;">ID</a></th>
+                        <th scope="col"><a href="?search={{ request.GET.search }}&order=name" style="text-decoration: none; color:black;">Nome</a></th>
+                    {% else %}
+                        <th scope="col"><a href="?order=pk" style="text-decoration: none; color:black;">ID</a></th>
+                        <th scope="col"><a href="?order=name" style="text-decoration: none; color:black;">Nome</a></th>
+                    {% endif %}
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for comp in company %}
+                    <tr>
+                        <th>{{ comp.id }}</th>
+                        <td><a href="{% url 'unique-company' comp.pk %}" class="text-muted" style="text-decoration: none;">{{ comp.name }}</a></td>
+                        <td>
+                            <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#editModal_{{ comp.pk }}" data-whatever="@mdo">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <div class="modal fade" id="editModal_{{ comp.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Atualizar dados da empresa</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="post" action="{% url 'update-company' comp.pk%}">
+                                            {% csrf_token %}
+
+                                            <div class="form-group">
+
+                                                {% if form_update_pk == comp.pk %}
+                                                    {% block extra_js %}
+                                                        <script>
+                                                            $('#editModal_{{ comp.pk }}').modal('show')
+                                                        </script>
+                                                    {% endblock %}
+                                                {% endif %}
+
+                                                <div>
+                                                    <strong> 
+                                                        {{ form_update.name.label }}
+                                                    </strong>
+
+                                                    {% if form_update_pk == comp.pk %}
+                                                        {% render_field form_update.name class="form-control"%}
+                                                        {% for error in form_update.name.errors %}
+                                                            <span class="help-block">{{ error }}</span>
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        {% render_field form.name class="form-control" value=comp.name %}
+                                                    {% endif %}
+                                                </div>
+
+                                                <div>
+                                                    <strong> 
+                                                        {{ form_update.cnpj.label }}
+                                                    </strong>
+                    
+                                                    {% if form_update_pk == comp.pk %}
+                                                        {% render_field form_update.cnpj class="form-control" %}
+                                                        {% for error in form_update.cnpj.errors %}
+                                                            <span class="help-block">{{ error }}</span>
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        {% render_field form.cnpj class="form-control" value=comp.cnpj %}
+                                                    {% endif %}
+                                                </div>    
+                                                
+                                                <div>
+                                                    <strong>
+                                                        {{ form_update.tel.label }}
+                                                    </strong> 
+
+                                                    {% if form_update_pk == comp.pk %}
+                                                        {% render_field form_update.tel class="form-control" %}
+                                                        {% for error in form_update.tel.errors %}
+                                                            <span class="help-block">{{ error }}</span>
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        {% render_field form.tel class="form-control" value=comp.tel %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Fechar</button>
+                                                    <button href="{% url 'update-company' comp.pk %}" type="submit" class="btn btn-success">Atualizar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                    <form method="post" action="{% url 'update-company' comp.pk%}">
-                                    {% csrf_token %}
-
-                                    <div class="form-group">
-
-                                        {% if form_update_pk == comp.pk %}
-                                            {% block extra_js %}
-                                                <script>
-                                                    $('#editModal_{{ comp.pk }}').modal('show')
-                                                </script>
-                                            {% endblock %}
-                                        {% endif %}
-
-                                        <div>
-                                            <strong> 
-                                                {{ form_update.name.label }}
-                                            </strong>
-
-                                            {% if form_update_pk == comp.pk %}
-                                                {% render_field form_update.name class="form-control"%}
-                                                {% for error in form_update.name.errors %}
-                                                    <span class="help-block">{{ error }}</span>
-                                                {% endfor %}
-                                            {% else %}
-                                                {% render_field form.name class="form-control" value=comp.name %}
-                                            {% endif %}
+                            </div>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal_{{ comp.pk }}">
+                                <i class="fas fa-times-circle"></i>
+                            </button>
+                            <div class="modal fade text-dark" id="deleteModal_{{ comp.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Deletar empresa</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
-
-                                        <div>
-                                            <strong> 
-                                                {{ form_update.cnpj.label }}
-                                            </strong>
-            
-                                            {% if form_update_pk == comp.pk %}
-                                                {% render_field form_update.cnpj class="form-control" %}
-                                                {% for error in form_update.cnpj.errors %}
-                                                    <span class="help-block">{{ error }}</span>
-                                                {% endfor %}
-                                            {% else %}
-                                                {% render_field form.cnpj class="form-control" value=comp.cnpj %}
-                                            {% endif %}
-                                        </div>    
-                                        
-                                        <div>
-                                            <strong>
-                                                {{ form_update.tel.label }}
-                                            </strong> 
-
-                                            {% if form_update_pk == comp.pk %}
-                                                {% render_field form_update.tel class="form-control" %}
-                                                {% for error in form_update.tel.errors %}
-                                                    <span class="help-block">{{ error }}</span>
-                                                {% endfor %}
-                                            {% else %}
-                                                {% render_field form.tel class="form-control" value=comp.tel %}
-                                            {% endif %}
-                                        </div>
+                                    <div class="modal-body">
+                                        Deseja mesmo deletar a empresa selecionada?
                                     </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Fechar</button>
-                                            <button href="{% url 'update-company' comp.pk %}" type="submit" class="btn btn-success">Atualizar</button>
+                                            <a href="{% url 'delete-company' comp.pk %}" type="button" class="btn btn-warning">Deletar</a>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal_{{ comp.pk }}">
-                        <i class="fas fa-times-circle"></i>
-                    </button>
-                    <div class="modal fade text-dark" id="deleteModal_{{ comp.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Deletar empresa</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            <div class="modal-body">
-                                Deseja mesmo deletar a empresa selecionada?
-                            </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Fechar</button>
-                                    <a href="{% url 'delete-company' comp.pk %}" type="button" class="btn btn-warning">Deletar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
         </table>
 
         <div>
