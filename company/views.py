@@ -21,11 +21,15 @@ def home_company(request):
             Q(tel__startswith=search)
             )
 
+    order = request.GET.get('order')
+    if order:
+        company = company.order_by(order) # ('-' + order)
+
     paginator = Paginator(company, 4)
     page = request.GET.get('page')
     company = paginator.get_page(page)
 
-    context = {'company': company}
+    context = {'company': company, 'order': order}
     
     context['form'] = CompanyForm()
     context['form_update'] = CompanyForm(prefix="update")
