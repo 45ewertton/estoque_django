@@ -13,7 +13,7 @@
 - Realização do sistema de busca de produtos e empresas OK
     - Busca por todos os campos OK
 - BASES HTML
-    - Reduzir os bases.html em um único base para reaproveitar a navbar
+    - Reduzir os bases.html em um único base para reaproveitar a navbar (base_navbar.html) OK
     - Criar um base_paginator.html para reaproveitamento da paginação das duas apps
 - Ordenar (produtos e empresas) de acordo com o campo selecionado
     - Ordenar todos os itens e não perder a ordenação caso ocorra a paginação
