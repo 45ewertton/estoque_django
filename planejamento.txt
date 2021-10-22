@@ -12,7 +12,7 @@ Controle de estoque utilizando Django (Padrão MTV)
 - Organizar forms de produto e empresa (Cadastrar e Atualizar) OK
 - Realização do sistema de busca de produtos e empresas OK
     - Busca por todos os campos OK
-- BASES HTML
+- BASES HTML OK
     - Reduzir os bases.html em um único base para reaproveitar a navbar (base_navbar.html) OK
     - Criar um base_paginator.html para reaproveitamento da paginação das duas apps OK
 - Ordenar (produtos e empresas) de acordo com o campo selecionado OK
@@ -21,11 +21,4 @@ Controle de estoque utilizando Django (Padrão MTV)
 - Login de usuário
 - Registrar usuário
 - FK de usuário e estoque*
-- O usuário vai ser capaz de cadastrar produtos e ter controle sobre ele (CRUD). 
-
-Algumas anotações:
-
-    (views de products)
-    order = request.GET.get('order')
-    if order:
-        product = product.order_by(order) # ('-' + order)
+- O usuário vai ser capaz de cadastrar produtos e ter controle sobre ele (CRUD).
