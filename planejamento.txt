@@ -19,7 +19,7 @@ Controle de estoque utilizando Django (Padrão MTV)
     - Ordenar todos os itens e não perder a ordenação caso ocorra a paginação OK
     - Ordenar itens pesquisados e não perder a ordenação caso ocorra a paginação OK
 - Login de usuário OK
+- Registrar usuário OK
+- FK de usuário e estoque
 - Alterar nome de usuário e senha
-- Registrar usuário
-- FK de usuário e estoque*
-- O usuário vai ser capaz de cadastrar produtos e ter controle sobre ele (CRUD).
+- O usuário vai ser capaz de cadastrar produtos/empresas e ter controle sobre ele (CRUD).
