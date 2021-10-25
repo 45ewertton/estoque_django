@@ -4,9 +4,11 @@ from company.forms import CompanyForm
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-# Visualizar todas as empresas e criar novas empresas em um único método
+@login_required
+# Visualizar todas as empresas, pesquisar, ordenar e criar novas empresas em um único método
 def home_company(request):
 
     context = {}
@@ -45,6 +47,7 @@ def home_company(request):
     
     return render(request, 'company.html', context)
 
+@login_required
 # Visualizar um objeto específico
 def unique_company(request, pk):
 
@@ -54,6 +57,7 @@ def unique_company(request, pk):
     
     return render(request, 'unique.html', context)
 
+@login_required
 # Deletar uma empresa especifica
 def delete_company(request, pk):
 
@@ -64,6 +68,7 @@ def delete_company(request, pk):
 
     return redirect('home-company')
 
+@login_required
 # Atualizar uma empresa especifica
 def update_company(request, pk):
     form = CompanyForm()

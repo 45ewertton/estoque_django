@@ -3,8 +3,10 @@ from .models import Product
 from product.forms import ProductForm
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+@login_required
 def product_list(request):
 
     context = {}
@@ -32,12 +34,14 @@ def product_list(request):
 
     return render(request, 'product.html', context)
 
+@login_required
 def product_view(request, pk):
 
     p_view = Product.objects.get(pk=pk)
 
     return render(request, 'view.html', {'product': p_view})
 
+@login_required
 def product_form(request):
 
     context = {}
@@ -45,12 +49,14 @@ def product_form(request):
     
     return render(request, 'forms.html', context)
 
+@login_required
 def product_create(request):
     form = ProductForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect('/')
 
+@login_required
 def product_update(request,pk):
     context = {}
     p_update = get_object_or_404(Product, pk=pk)
@@ -67,6 +73,7 @@ def product_update(request,pk):
         context = {'form': form,'product':p_update}
         return render(request, 'update.html', context)   
 
+@login_required
 def product_delete(request, pk):
     p_delete = Product.objects.get(pk=pk)
     p_delete.delete()
