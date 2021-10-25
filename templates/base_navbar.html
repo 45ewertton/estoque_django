@@ -49,6 +49,9 @@
                 <li class="nav-item" style="list-style: none;">
                     <a class="navbar-brand" href="{% url 'home-company' %}">Empresas</a>
                 </li>
+                <li class="nav-item text-uppercase" style="list-style: none; font-size: 10px;">
+                    <a class="navbar-brand" href="#">Bem Vindo - {{ request.user.username }}</a>
+                </li>
             {% if product %}
                 <button class="navbar- btn-dark" style="margin-right:25px" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
             {% elif company%}
