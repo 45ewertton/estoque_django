@@ -21,6 +21,8 @@ Controle de estoque utilizando Django (Padrão MTV)
 - Login de usuário OK
 - Registrar usuário OK
 - Identificação do usuário OK
-- FK de usuário e estoque
+- FK's de User
+    - Product OK
+    - Company
 - Alterar nome de usuário e senha
 - O usuário vai ser capaz de cadastrar produtos/empresas e ter controle sobre ele (CRUD).

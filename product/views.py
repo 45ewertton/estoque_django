@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 def product_list(request):
 
     context = {}
-    product = Product.objects.all()
+    product = Product.objects.all().filter(user=request.user)
 
     search = request.GET.get('search')
     if search:
@@ -19,7 +19,8 @@ def product_list(request):
             Q(name__icontains=search) |
             Q(description__icontains=search) |
             Q(price__startswith=search) |
-            Q(amount__startswith=search)
+            Q(amount__startswith=search),
+            user=request.user
             )
 
     order = request.GET.get('order')
@@ -45,7 +46,7 @@ def product_view(request, pk):
 def product_form(request):
 
     context = {}
-    context['form'] = ProductForm()
+    context['form'] = ProductForm() #initial={'user': request.user}
     
     return render(request, 'forms.html', context)
 
@@ -53,6 +54,7 @@ def product_form(request):
 def product_create(request):
     form = ProductForm(request.POST or None)
     if form.is_valid():
+        form.instance.user = request.user
         form.save()
         return redirect('/')
 
