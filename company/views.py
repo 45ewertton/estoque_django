@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 def home_company(request):
 
     context = {}
-    company = Company.objects.all()
+    company = Company.objects.all().filter(user=request.user)
 
     search = request.GET.get('search')
     if search:
@@ -20,7 +20,8 @@ def home_company(request):
             Q(pk__startswith=search) |
             Q(name__icontains=search) |
             Q(cnpj__startswith=search) |
-            Q(tel__startswith=search)
+            Q(tel__startswith=search),
+            user=request.user
             )
 
     order = request.GET.get('order')
@@ -33,12 +34,13 @@ def home_company(request):
 
     context = {'company': company, 'order': order}
     
-    context['form'] = CompanyForm()
+    context['form'] = CompanyForm()  #initial={'user': request.user}
     context['form_update'] = CompanyForm(prefix="update")
 
     if request.POST:
         form = CompanyForm(request.POST or None)
         if form.is_valid():
+            form.instance.user = request.user
             form.save()
             messages.info(request, 'Empresa criada com sucesso!')
             return redirect('home-company')
