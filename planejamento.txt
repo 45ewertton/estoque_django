@@ -1,4 +1,4 @@
-Controle de estoque utilizando Django (Padrão MTV) OK
+Controle de estoque utilizando Django (Padrão MTV)
 
 - Crud do produto OK
 - Crud de empresa OK
@@ -26,3 +26,9 @@ Controle de estoque utilizando Django (Padrão MTV) OK
     - Company OK
 - Alterar senha de usuário OK
 - O usuário vai ser capaz de cadastrar produtos/empresas e ter controle sobre ele (CRUD) OK
+- Criar nova app utilizando Class Based View (CBV)
+    - Utilizar mensagens para ações de sucesso
+    - Paginação
+    - Busca
+    - ordenar
+    - FK com user
