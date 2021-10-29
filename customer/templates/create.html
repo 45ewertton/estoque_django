@@ -1,0 +1,25 @@
+{% extends 'base_navbar.html' %}
+{% load widget_tweaks %}
+{% block title %}Clientes - Cadastro{% endblock %}
+{% block content %}
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h1>Cadastro de cliente</h1>
+    </div>
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <a href="{% url 'customer-list' %}" class="btn btn-outline-dark"><i class="fas fa-arrow-left"></i></a>
+    </div>
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <form name="form" id="form" method="post">
+            {% csrf_token %}
+                {% for field in form.visible_fields %}
+                        <div class="form-group" style="margin-top: 35px;">
+                            <strong>
+                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            </strong>
+                            {{ field|add_class:'form-control' }}
+                        </div>
+                {% endfor %}
+                <input type="submit" class="btn btn-success" style="margin-top: 40px;" value="Salvar">
+        </form>
+    </div>
+{% endblock %}
