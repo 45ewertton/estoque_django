@@ -37,3 +37,4 @@ Controle de estoque utilizando Django (Padrão MTV)
     - Busca
     - ordenar
     - FK com user
+- Criar um template base para busca
