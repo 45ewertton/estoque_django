@@ -18,19 +18,19 @@
             {% if product %}
                 <div class="bg-dark p-4">
                     <h4 class="text-white">Projeto Django</h4>
-                    <span class="text-muted">Navegue entre produtos e empresas</span><br>
+                    <span class="text-muted">Navegue entre produtos, empresas e clientes</span><br>
                     <span class="text-white"><a href="/accounts/logout" style="text-decoration: none; color:white;">Sair</a></span>
                 </div>
             {% elif company %}
                 <div class="bg-light p-4">
                     <h4 class="text-black">Projeto Django</h4>
-                    <span class="text-muted">Navegue entre produtos e empresas</span><br>
+                    <span class="text-muted">Navegue entre produtos, empresas e clientes</span><br>
                     <span class="text-black"><a href="/accounts/logout" style="text-decoration: none; color:black;">Sair</a></span>
                 </div>
             {% else %}
                 <div class="bg-dark p-4">
                     <h4 class="text-white">Projeto Django</h4>
-                    <span class="text-muted">Navegue entre produtos e empresas</span><br>
+                    <span class="text-muted">Navegue entre produtos, empresas e clientes</span><br>
                     <span class="text-white"><a href="/accounts/logout" style="text-decoration: none; color:white;">Sair</a></span>
                 </div>
             {% endif %}
@@ -52,6 +52,9 @@
                 </li>
                 <li class="nav-item" style="list-style: none; padding-left:25px">
                     <a class="navbar-brand" href="{% url 'home-company' %}">Empresas</a>
+                </li>
+                <li class="nav-item" style="list-style: none; padding-left:25px">
+                    <a class="navbar-brand" href="{% url 'customer-list' %}">Clientes</a>
                 </li>
                 <li class="nav-item active" style="list-style: none; padding-left:25px">
                     <a class="navbar-brand" href="{% url 'alter-user' %}">Alterar senha</a>
