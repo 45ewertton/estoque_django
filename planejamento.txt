@@ -32,6 +32,7 @@ Controle de estoque utilizando Django (Padrão MTV)
     - Atualização de clientes
     - Deletar clientes
     - Visualização de um único cliente
+    - Verificar erros nos formulários
     - Utilizar mensagens para ações de sucesso
     - Paginação
     - Busca

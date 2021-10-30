@@ -17,6 +17,13 @@
                                 <label for="{{ field.id_for_label }}">{{ field.label }}</label>
                             </strong>
                             {{ field|add_class:'form-control' }}
+                            {% for error in field.errors %}
+                                <div style="color:rgb(185, 5, 5);">
+                                    <strong>
+                                        {{ error }}
+                                    </strong>
+                                </div>
+                            {% endfor %}
                         </div>
                 {% endfor %}
                 <input type="submit" class="btn btn-success" style="margin-top: 40px;" value="Salvar">

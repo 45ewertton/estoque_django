@@ -15,6 +15,6 @@ class CustomerView(ListView):
 
 class CreateCustomerView(CreateView):
     models = Customer
-    template_name = 'create.html'
+    template_name = 'form_customer.html'
     form_class = CustomerForm
     success_url = reverse_lazy('customer-list')
