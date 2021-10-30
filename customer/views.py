@@ -14,7 +14,13 @@ class CustomerView(ListView):
     context_object_name = 'customer'
 
 class CreateCustomerView(CreateView):
-    models = Customer
+    model = Customer
+    template_name = 'form_customer.html'
+    form_class = CustomerForm
+    success_url = reverse_lazy('customer-list')
+
+class UpdateCustomerView(UpdateView):
+    model = Customer
     template_name = 'form_customer.html'
     form_class = CustomerForm
     success_url = reverse_lazy('customer-list')

@@ -28,11 +28,11 @@ Controle de estoque utilizando Django (Padrão MTV)
 - O usuário vai ser capaz de cadastrar produtos/empresas e ter controle sobre ele (CRUD) OK
 - Criar nova app utilizando Class Based View (CBV)
     - Listagem de clientes OK
-    - Criação de clientes
-    - Atualização de clientes
+    - Criação de clientes OK
+    - Atualização de clientes OK
     - Deletar clientes
     - Visualização de um único cliente
-    - Verificar erros nos formulários
+    - Verificar erros nos formulários OK
     - Utilizar mensagens para ações de sucesso
     - Paginação
     - Busca
