@@ -43,7 +43,7 @@ Controle de estoque utilizando Django (Padrão MTV)
     - Reduzir os bases.html em um único base para reaproveitar a navbar (base_navbar.html) OK
     - Criar um base_paginator.html para reaproveitamento da paginação das duas apps OK
     - Criar um template base para messages para reutilizar entre as apps OK
-    - Criar um template base para busca
+    - Criar um template base para busca OK
 
 fix: 
     - Verificar update das apps product e company OK

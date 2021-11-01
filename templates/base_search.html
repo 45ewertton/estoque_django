@@ -1,0 +1,9 @@
+<form class="form-inline col-4 m-auto mt-3" method="GET">
+    <div class="form-group mb-2">
+        {% csrf_token %}
+        <div class="input-group input-group-sm">
+            <input type="text" class="form-control" name="search" value="{{ request.GET.search }}">
+            <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+</form>
