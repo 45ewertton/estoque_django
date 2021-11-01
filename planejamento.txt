@@ -12,9 +12,6 @@ Controle de estoque utilizando Django (Padrão MTV)
 - Organizar forms de produto e empresa (Cadastrar e Atualizar) OK
 - Realização do sistema de busca de produtos e empresas OK
     - Busca por todos os campos OK
-- BASES HTML OK
-    - Reduzir os bases.html em um único base para reaproveitar a navbar (base_navbar.html) OK
-    - Criar um base_paginator.html para reaproveitamento da paginação das duas apps OK
 - Ordenar (produtos e empresas) de acordo com o campo selecionado OK
     - Ordenar todos os itens e não perder a ordenação caso ocorra a paginação OK
     - Ordenar itens pesquisados e não perder a ordenação caso ocorra a paginação OK
@@ -33,9 +30,20 @@ Controle de estoque utilizando Django (Padrão MTV)
     - Deletar clientes OK
     - Visualização de um único cliente*
     - Verificar erros nos formulários OK
-    - Utilizar mensagens para ações de sucesso
+    - Utilizar mensagens para ações de sucesso OK
+        - Create OK
+        - Update OK
+        - Delete OK
     - Paginação
     - Busca
     - ordenar
     - FK com user
-- Criar um template base para busca
+- Adicionar mensagens na app product OK
+- BASES HTML OK
+    - Reduzir os bases.html em um único base para reaproveitar a navbar (base_navbar.html) OK
+    - Criar um base_paginator.html para reaproveitamento da paginação das duas apps OK
+    - Criar um template base para messages para reutilizar entre as apps OK
+    - Criar um template base para busca
+
+fix: 
+    - Verificar update das apps product e company OK

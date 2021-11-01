@@ -4,6 +4,7 @@ from product.forms import ProductForm
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 # Create your views here.
 
 @login_required
@@ -56,6 +57,7 @@ def product_create(request):
     if form.is_valid():
         form.instance.user = request.user
         form.save()
+        messages.info(request, 'Produto criado com sucesso!')
         return redirect('/')
 
 @login_required
@@ -68,7 +70,9 @@ def product_update(request,pk):
         form = ProductForm(request.POST, instance=p_update)
 
         if form.is_valid():
+            form.instance.user=request.user
             form.save()
+            messages.info(request, 'Produto atualizado com sucesso!')
             return redirect('/')
     #Metodo GET
     else:
@@ -79,5 +83,6 @@ def product_update(request,pk):
 def product_delete(request, pk):
     p_delete = Product.objects.get(pk=pk)
     p_delete.delete()
+    messages.info(request, 'Produto deletado com sucesso!')
 
     return redirect('/')

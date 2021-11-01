@@ -85,6 +85,7 @@ def update_company(request, pk):
         form_update = CompanyForm(request.POST, instance=comp_update)
 
         if form_update.is_valid():
+            form_update.instance.user=request.user
             form_update.save()
             messages.info(request, 'Empresa atualizada com sucesso!')
             return redirect('home-company')

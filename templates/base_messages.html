@@ -1,0 +1,11 @@
+<div class="col-8 m-auto pt-2 pb-2 text-center">
+    {% if messages %}
+        <div class="pt-3">
+            <ul class="messages">
+                {% for message in messages %}
+                    <ul {% if message.tags %}class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</ul>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</div>
