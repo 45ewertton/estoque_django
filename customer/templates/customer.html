@@ -15,7 +15,7 @@
             </form>
     </div>
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <a href="{% url 'create-list' %}" class="btn btn-outline-dark">Novo Cliente</a>
+        <a href="{% url 'create-customer' %}" class="btn btn-outline-dark">Novo Cliente</a>
     </div>
 
     <div class="col-10 m-auto pt-2 pb-2 text-center">
@@ -51,12 +51,12 @@
                 <td>{{ cust.updated_at }}</td>
                 <td>
                     <a href="#" class="btn btn-light btn-sm"><i class="fas fa-eye"></i></a>
-                    <a href="{% url 'update-list' cust.pk %}" class="btn btn-success btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                    <a href="{% url 'update-customer' cust.pk %}" class="btn btn-success btn-sm"><i class="fas fa-pencil-alt"></i></a>
 
-                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteCustomerModal_{{ p.id }}">
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteCustomerModal_{{ cust.id }}">
                         <i class="fas fa-trash"></i>
                     </button>
-                    <div class="modal fade text-dark" id="deleteCustomerModal_{{ p.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteCustomerModalLabel" aria-hidden="true">
+                    <div class="modal fade text-dark" id="deleteCustomerModal_{{ cust.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteCustomerModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -70,7 +70,7 @@
                             </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Fechar</button>
-                                    <a href="#" type="button" class="btn btn-danger">Deletar</a>
+                                    <a href="{% url 'delete-customer' cust.pk %}" type="button" class="btn btn-danger">Deletar</a>
                                 </div>
                             </div>
                         </div>

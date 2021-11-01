@@ -1,6 +1,7 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.shortcuts import redirect, get_object_or_404
 
 from .models import Customer
 from .forms import CustomerForm
@@ -24,3 +25,10 @@ class UpdateCustomerView(UpdateView):
     template_name = 'form_customer.html'
     form_class = CustomerForm
     success_url = reverse_lazy('customer-list')
+
+class DeleteCustomerView(View):
+
+    def get(self, request, *args, **kwargs):
+        customer = get_object_or_404(Customer, pk=self.kwargs['pk'])
+        customer.delete()
+        return redirect(reverse_lazy('customer-list'))
