@@ -20,8 +20,9 @@ class CustomerView(ListView):
 
     def get_queryset(self):
         search = self.request.GET.get('search')
+        order = self.request.GET.get('order')
+
         if search:
-            print(search)
             object_list = Customer.objects.filter(
             Q(pk__startswith=search) |
             Q(name__icontains=search) |
@@ -29,6 +30,10 @@ class CustomerView(ListView):
             )
         else:
             object_list = Customer.objects.all()
+
+        if order:
+            object_list = object_list.order_by(order)
+
         return object_list
 
 class CreateCustomerView(SuccessMessageMixin, CreateView):
