@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.db.models import Q
 
 from .models import Customer
 from .forms import CustomerForm
@@ -16,6 +17,19 @@ class CustomerView(ListView):
     context_object_name = 'customer'
     paginate_by = 4
     queryset = Customer.objects.all()
+
+    def get_queryset(self):
+        search = self.request.GET.get('search')
+        if search:
+            print(search)
+            object_list = Customer.objects.filter(
+            Q(pk__startswith=search) |
+            Q(name__icontains=search) |
+            Q(tel__startswith=search),
+            )
+        else:
+            object_list = Customer.objects.all()
+        return object_list
 
 class CreateCustomerView(SuccessMessageMixin, CreateView):
     model = Customer
