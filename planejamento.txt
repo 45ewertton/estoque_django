@@ -34,7 +34,7 @@ Controle de estoque utilizando Django (Padrão MTV)
         - Create OK
         - Update OK
         - Delete OK
-    - Paginação
+    - Paginação OK
     - Busca
     - ordenar
     - FK com user

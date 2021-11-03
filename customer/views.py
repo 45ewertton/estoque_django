@@ -13,8 +13,9 @@ from .forms import CustomerForm
 class CustomerView(ListView):
     models = Customer
     template_name = 'customer.html'
-    queryset = Customer.objects.all()
     context_object_name = 'customer'
+    paginate_by = 4
+    queryset = Customer.objects.all()
 
 class CreateCustomerView(SuccessMessageMixin, CreateView):
     model = Customer
