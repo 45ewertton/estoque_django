@@ -1,4 +1,4 @@
-Controle de estoque utilizando Django (Padrão MTV)
+Controle de estoque utilizando Django (Padrão MTV) OK
 
 - Crud do produto OK
 - Crud de empresa OK
@@ -37,7 +37,7 @@ Controle de estoque utilizando Django (Padrão MTV)
     - Paginação OK
     - Busca OK
     - ordenar OK
-    - FK com user
+    - FK com user OK
 - Adicionar mensagens na app product OK
 - BASES HTML OK
     - Reduzir os bases.html em um único base para reaproveitar a navbar (base_navbar.html) OK
